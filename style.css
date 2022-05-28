@@ -1,0 +1,818 @@
+@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap');
+
+/*===== RESET =====*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+:root {
+    --header-height: 4.5rem; /*Equivale a 72px*/
+
+    /* COLORS */
+    /*Valor passado como variável dentro dos valores de cores HSL. Pode ser alterado para modificar todo o esquema de cores*/
+   --hue: 270;
+   /*HSL color mode*/
+   --dark-color:  hsl(var(--hue), 77%, 29%);
+   --base-color: hsl(var(--hue) 76% 37%);
+   --base-color-second: hsl(var(--hue) 40% 85%);
+   --base-color-alt: hsl(var(--hue) 70% 53%);
+   --title-color: hsl(var(--hue) 41% 10%);
+   --text-color: hsl(0 0% 46%);
+   --body-color: hsl(0 0% 98%);
+
+   /* FONTS*/
+   --title-font-size: 1.875rem;
+   --subtitle-font-size: 1rem;
+
+   --title-font: 'Montserrat', sans-serif;
+   --body-font: 'Raleway', sans-serif;
+   
+}
+
+/*======= BASE =======*/
+
+html {
+    /*Rolagem de tela suave*/
+    scroll-behavior: smooth;
+}
+
+body {
+    /* weight size family*/
+    font: 400 1rem var(--body-font);
+    color: var(--text-color);
+    background: var(--body-color);
+    /*No navegador, esta propriedade e valor determinam a suavidade da fonte*/
+    -webkit-font-smoothing: antialiased;
+}
+
+.title {
+    /* weight size family*/
+    font: 700 var(--title-font-size) var(--title-font);
+    color: var(--title-color);
+    -webkit-font-smoothing: auto;
+}
+
+
+
+.button {
+    background-color: var(--base-color-alt);
+    color: var(--body-color);
+    height: 3.5rem; /* 56px / 16 = 3.5rem */
+    display: inline-flex;
+    align-items: center;
+    padding: 0 2rem;
+    border-radius: 2rem;
+    font: 500 1 rem var(--body-font);
+    /*transição deve ser inserida no elemento principal ao invés de ser colocada no hover*/
+    transition: background 300ms;
+}
+
+.button:hover {
+    background: var(--base-color);
+}
+
+.divider-1 {
+    height: 2px;
+    background: linear-gradient(
+        270deg, 
+        hsla(var(--hue), 36%, 57%, 1), 
+        hsla(var(--hue), 65%, 88%, 0.34)
+    );
+}
+
+.divider-2 {
+    height: 2px;
+    background: linear-gradient(
+        270deg,
+        hsla(var(--hue), 65%, 88%, 0.34),
+        hsla(var(--hue), 36%, 57%, 1)
+    );
+}
+
+/*====== LAYOUT ======*/
+.container {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.section {
+    padding: calc(5rem + var(--header-height)) 0;
+}
+
+.section .title {
+    margin-bottom: 1rem;
+}
+
+.section .subtitle {
+    font-size: var(--subtitle-font-size);
+}
+
+.section header {
+    margin-bottom: 4rem;
+}
+
+.section header strong {
+    color: var(--base-color);
+}
+
+#header {
+    background: var(--base-color);
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 2rem;
+    display: flex;
+    color: var(--body-color);
+    /*Ao deixar o menu fixo, deve ser utilizado width 100% por garantia, position fixed para rolar junto com a página e o z-index para ficar bem acima de tudo*/
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+}
+
+#header.scroll {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/*======= LOGO =======*/
+.logo {
+    font: 500 2.1rem 'Beau Rivage', sans-serif;
+    color: var(--body-color);
+}
+
+
+/*======= NAVIGATION =======*/
+nav {
+    height: var(--header-height); 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+nav ul li {
+    text-align: center;
+}
+
+/*Alterando a cor das letras do menu de navegação*/
+nav .menu ul li a {
+    color: var(--body-color);
+}
+
+nav ul li a {
+    transition: color 0.2s;
+    /*Posicionamento definido para ajustar o ::after*/
+    position: relative;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--base-color-second);
+}
+
+nav ul li a::after
+ {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--base-color-second);
+
+    /*Posicionando o pseudo elemento abaixo das li's*/
+    position: absolute;
+    left: 0;
+    bottom: -1.5rem;
+
+    transition: width 0.2s;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;   
+}
+
+nav .menu {
+    opacity: 0;
+    visibility: hidden;
+    top: -20rem;
+    transition: 0.2s;
+}
+
+nav .menu ul {
+    display: none;
+}
+
+
+/*===== EXIBIR MENU =====*/
+/*A classe "colada" ao seletor, significa que quando ele RECEBER a classe, irá procurar o .menu para então fazer as alterações*/
+nav.show .menu {
+    opacity: 1;
+    visibility: visible;
+
+    background: var(--base-color);
+    /*Com as seguintes propriedades, o menu irá ocupar a tela inteira*/
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-content: center;
+}
+
+nav.show .menu ul {
+    display: grid;
+}
+
+nav.show ul.grid {
+    gap: 4rem;
+}
+
+/*====== TOGGLE MENU =======*/
+
+.toggle {
+    color: var(--body-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+nav .icon-close {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: -1.5rem;
+    right: 1.5rem;
+
+    transition: 0.2s;
+}
+
+nav.show .icon-close {
+    visibility: visible;
+    opacity: 1;
+    top: 1.5rem;
+}
+
+/*======= HOME =======*/
+
+#home {
+    overflow: hidden;
+}
+
+#home .container {
+    margin: 0;
+}
+
+#home .image {
+    position: relative;
+}
+
+#home .image::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: var(--base-color-second);
+    /*o absolute fica assim em relação a página, sendo assim, na caixa pai em que está contido, utiliza-se o position: relative*/
+    position: absolute;
+    /*Cálculo de regra de três, baseado nos valores no projeto do FIGMA*/
+    top: -16.8%;
+    /*Deslocamento à esqueda*/
+    left: 16.8%;
+    /*z-index funciona sempre que um seletor possuir uma propriedade position*/
+    z-index: 0;
+}
+
+#home .image img {
+    position: relative;
+    /*Deslocamento à direita*/
+    right: 2.93rem;
+}
+
+#home .image img,
+#home .image::before {
+    border-radius: 0.25rem; /*4px = 4px / 16px (100%) = 0.25rem*/
+}
+
+#home .text {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    text-align: center;
+}
+
+#home .text h2 {
+    margin-bottom: 1rem;
+}
+
+#home .text p {
+    margin-bottom: 2rem;
+}
+
+/*====== ABOUT ======*/
+
+#about {
+    background: white;
+}
+
+#about .container {
+    margin: 0;
+}
+
+#about .image {
+    position: relative;
+}
+
+#about .image::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: var(--base-color-second);
+    /*o absolute fica assim em relação a página, sendo assim, na caixa pai em que está contido, utiliza-se o position: relative*/
+    position: absolute;
+    /*Cálculo de regra de três, baseado nos valores no projeto do FIGMA*/
+    top: -8.4%;
+    /*Deslocamento à esqueda*/
+    left: -33%;
+    /*z-index funciona sempre que um seletor possuir uma propriedade position*/
+    z-index: 0;
+}
+
+#about .image img {
+    position: relative; /*Deslocamento à direita*/
+}
+
+#about .image img,
+#about .image::before {
+    border-radius: 0.25rem; /* 4px = 4px / 16px (100%) = 0.25rem */
+}
+
+#about .text {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+/*====== SERVICES ======*/
+
+.cards.grid {
+    gap: 1.5rem;
+}
+
+.card {
+    padding: 3.625rem 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    border-bottom: 0.16rem solid var(--base-color);
+    text-align: center;
+}
+
+/*Alteração de posicionamento e cor dos ícones*/
+.card i {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 5rem;
+    color: var(--base-color);
+}
+
+.card .title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+/*====== TESTIMONIALS ======*/
+
+#testimonials {
+    background: white;
+}
+
+#testimonials .container {
+    margin-left: 0;
+    margin-left: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#testimonials header {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+}
+
+#testimonials blockquote {
+    padding: 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    border-radius: 0.25rem;
+}
+
+#testimonials blockquote p {
+    position: relative;
+    text-indent: 1.875rem;
+    margin-bottom: 1.5rem;
+}
+
+#testimonials blockquote p span {
+    font: 700 3rem serif;
+    position: absolute;
+    top: -0.6rem;
+    left: -1.875rem;
+    color: var(--base-color);
+}
+
+
+#testimonials cite {
+    /*Alinhamento de imagem e texto*/
+    display: flex;
+    align-items: center;
+    font-style: italic; 
+}
+
+#testimonials cite img {
+    width: 2rem;
+    height: 2rem;
+    /* Pega o objeto/imagem e o encaixa, cobrindo todo o espaço */
+    object-fit: cover;
+    /* Propriedade para criar uma "máscara" para a imagem */
+    clip-path: circle();
+    margin-right: 0.5rem;
+}
+
+/* ====== SWIPER ======*/
+
+.swiper-slide {
+    height: auto;
+    padding: 4rem 1rem;
+}
+
+.swiper-pagination-bullet {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--base-color);
+}
+
+/*====== CONTACT ====== */
+
+#contact .grid {
+    gap: 4rem;
+}
+
+#contact .text p {
+    margin-bottom: 2rem;
+}
+
+#contact .button i,
+#contact ul li i {
+    font-size: 1.5rem;
+    margin-right: 0.625rem;
+}
+
+#contact ul.grid {
+    gap: 2rem;
+}
+
+#contact ul li {
+    display: flex;
+    align-items: center;
+}
+
+#contact ul li i {
+    color: var(--base-color);
+}
+
+/*====== FOOTER ======*/
+
+footer {
+    background: var(--base-color);
+}
+
+footer.section {
+    padding: 4rem 0;
+}
+
+footer .logo {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+footer .brand p {
+    color: var(--body-color);
+    margin-bottom: 0.75rem;
+}
+
+footer  i {
+    font-size: 1.5rem;
+    color: var(--body-color);
+}
+
+footer .social {
+    grid-auto-flow: column;
+    width: fit-content; /* Ajustar-se ao conteúdo*/
+}
+
+footer .social a {
+    transition: 0.3s;
+    display: inline-block;
+}
+
+footer .social a:hover {
+    transform: translateY(-8px);
+}
+
+/*====== BACK TO TOP ======*/
+
+.back-to-top {
+    background: var(--base-color-alt);
+    color: var(--body-color);
+
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+
+    padding: 0.5rem;
+    clip-path: circle();
+    font-size: 1.5rem;
+    line-height: 0;
+
+    /*Botão será oculto inicialmente para aparecer depois*/
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    transform: translateY(100%);
+}
+
+/*Classe show sendo aplicada a classe do botão para ser ativada e o botão aparecer depois*/
+.back-to-top.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*===== RESPONSIVO - MEDIA QUERIES =====*/
+
+/* medium devices: 770px > */
+@media only screen and (min-width: 770px) {
+
+    main {
+        margin-top: var(--header-height);
+    }
+
+    /* Exibindo o menu automaticamente para dispositivos de tela grande*/
+    nav .menu {
+        opacity: 1;
+        visibility: visible;
+        top: 0;
+    }
+
+    nav .menu ul {
+        display: flex;
+        gap: 2rem;
+    }
+
+    nav .menu ul li a.title {
+        font: 600 0.85rem var(--body-font);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    nav .menu ul li a.title.active {
+        font-weight: bold;
+        -webkit-font-smoothing: auto;
+    }
+
+    nav .icon-menu {
+        display: none;
+    }
+
+    
+
+    /* HOME */
+    #home .container {
+        grid-auto-flow: column;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    #home .image {
+        order: 1;
+    }
+
+    #home .text {
+        order: 0;
+        max-width: 17rem;
+        text-align: left;
+    }
+
+    /* ABOUT */
+    #about .container {
+        margin: 0 auto;
+        grid-auto-flow: column;
+        
+    }
+
+    #about .image {
+        order: 0;
+    }
+
+    #about .text {
+        order: 1;
+    }
+
+    #about .image::before {
+        height: 10rem;
+    }
+
+    
+    /* SERVICES */
+    #services header {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        max-width: 30rem;
+    }
+
+    .cards {
+        /*1fr é uma unidade flexível, desde que sejam definidos quantas frações existirão*/
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .card {
+        width: 13.5rem;
+        padding-left: 0.6rem;
+        padding-right: 0.6rem;
+        
+    }
+
+    /* TESTIMONIALS */
+    #testimonials .title {
+        text-align: center;
+        
+    }
+
+    /* CONTACT */
+    #contact .container {
+        grid-auto-flow: column;
+        align-items: center;
+        padding: 0 5rem;
+    }
+
+    #contact .text {
+        max-width: 20rem;
+    }
+
+    /* FOOTER SECTION */
+    footer.section {
+        padding: 3.75rem;
+    }
+
+    footer .container {
+        grid-auto-flow: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    footer .logo {
+        font-size: 2.6rem;
+    }
+    
+}
+
+/* large devices: > 1000px*/
+@media only screen and (min-width: 1000px) {
+
+    :root {
+        --title-font-size: 2.2rem;
+        --subtitle-font-size: 1.125rem;
+    }
+
+    nav .menu ul {
+        gap: 3rem;
+    }
+
+    nav .menu ul li a.title {
+        font: 0.95rem;
+    }
+
+    /* ABOUT */
+    
+    #about .image::before {
+        height: 15rem;
+    }
+   
+    /* SERVICES */
+    .card {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        width: 16rem;
+    }
+
+} 
+
+
+/* extra large devices: 1200px > */
+/*et rule*/
+@media only screen and (min-width: 1200px) {
+
+    .container {
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section {
+        padding: 10rem 0;
+    }
+
+    .section header, 
+    #testimonials header {
+        max-width: 32rem;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    
+
+    /* Exibindo o menu automaticamente para dispositivos de tela grande*/
+    nav .menu {
+        opacity: 1;
+        visibility: visible;
+        top: 0;
+    }
+
+    nav .menu ul {
+        display: flex;
+        gap: 2rem;
+    }
+
+    nav .menu ul li a.title {
+        font: 700 1rem var(--body-font);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    nav .menu ul li a.title.active {
+        font-weight: bold;
+        -webkit-font-smoothing: auto;
+    }
+
+    /* HOME */
+
+    #home .text {
+        order: 0;
+        max-width: 24rem;
+        text-align: left;
+    }
+
+    /* ABOUT */
+    #about .container {
+        margin: 0 auto;
+        grid-auto-flow: column;
+    }
+
+    /* SERVICES */
+
+    .card {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    /* TESTIMONIALS */
+    #testimonials .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* CONTACT */
+
+    #contact .text {
+        max-width: 25rem;
+    }
+    
+    /* FOOTER SECTION */
+
+    footer .logo {
+        font-size: 3rem;
+    }
+}

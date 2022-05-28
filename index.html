@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ICONS-->
+    <link rel="stylesheet" href="./assets/fonts/style.css">
+
+    <!-- SWIPER -->
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>OriginSix</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav class="container">
+        <a class="logo" href="#">BeautySalon.</a>
+        <div class="menu">
+          <ul class="grid">
+            <li><a class="title" href="#home">Início</a></li>
+            <li><a class="title" href="#about">Sobre</a></li>
+            <li><a class="title" href="#services">Serviços</a></li>
+            <li><a class="title" href="#testimonials">Depoimentos</a></li>
+            <li><a class="title" href="#contact">Contato</a></li>
+          </ul>
+        </div>
+        <!--Menu de navegação-->
+        <!--ícones inseridos pela classe, contidos no documento style.css da pasta fonts-->
+        <div class="toggle icon-menu"></div>
+        <div class="toggle icon-close"></div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HOME -->
+      <section class="section" id="home">
+        <div class="container grid">
+          <div class="image">
+            <img
+              src="./assets/hairdresser.jpg"
+              alt="Mulher de blusa de manga longa cinza sorrindo com secador e pente na mão penteando o cabelo de outra mulher"/>
+          </div>
+  
+          <div class="text">
+            <h2 class="title">Saúde natural para os seus cabelos</h2>
+            <p>
+              Um salão exclusivo em São Paulo, especializado em tratamentos
+              naturais.
+            </p>
+            <a class="button" href="#">Agendar um horário</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-1"></div>
+
+      <!-- ABOUT -->
+      <section class="section" id="about">
+        <div class="container grid">
+          <div class="image">
+            <img src="./assets/women-saloon.jpg" alt="Três mulheres sorrindo e segurando acessórios de cabeleireira">
+          </div>
+          <div class="text">
+            <h2 class="title">Sobre nós</h2>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error perspiciatis, nam temporibus repellendus, voluptatem iste beatae sequi ducimus deleniti omnis excepturi praesentium odio sint reiciendis! Accusamus excepturi reprehenderit impedit ratione.</p>
+              <br>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit repellat laborum architecto nulla voluptates neque, reprehenderit earum, molestias commodi exercitationem at, enim consectetur voluptate nostrum consequatur similique labore. Libero, laboriosam!</p>
+              <br>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas perferendis aspernatur temporibus cumque illo adipisci voluptatibus, exercitationem provident, minima, inventore sapiente. Quam voluptatum sunt praesentium fugiat amet accusamus unde quibusdam.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-2"></div>
+
+      <!-- SERVICES -->
+      <section class="section" id="services">
+        <div class="container grid">
+          <header>
+            <h2 class="title">Serviços</h2>
+            <p class="subtitle">
+              Com mais de 10 anos no mercado, o <strong>BeautySalon</strong> já conquistou clientes de inúmeros países com seus tratamentos exclusivos e totalmente naturais
+            </p>
+          </header>
+
+          <div class="cards grid">
+
+            <div class="card">
+              <!-- O nome do ícone consta na parte da TAG (antes de exportar) -->
+              <i class="icon-woman-hair"></i>
+              <h3 class="title">Terapia capilar</h3>
+              <p>Terapia completa para couro cabeludo e fios, protegendo todos os tipos de cabelos, inclusive os longos e finos.</p>
+            </div>
+
+            <div class="card">
+              <i class="icon-trim"></i>
+              <h3 class="title">Cortes</h3>
+              <p>A nossa equipe é repleta de profissionais renomados, famosos por lançarem tendências com cortes diferenciados e clássicos.</p>
+            </div>
+
+            <div class="card">
+              <i class="icon-cosmetic"></i>
+              <h3 class="title">Tratamentos</h3>
+              <p>O BeautySalon conta com diversos tratamentos naturais e totalmente veganos, para qualquer tipo de cabelo.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-1"></div>
+
+      <!-- TESTIMONIALS -->
+      <section class="section" id="testimonials">
+        <div class="container">
+          <header>
+            <h2 class="title">Depoimentos de quem já passou por aqui</h2>
+          </header>
+          <!--Adicionando classes wrapper para adicionar o efeito de carrossel -->
+          <div class="testimonials swiper-container">
+
+            <div class="swiper-wrapper">
+
+              <div class="testimonial swiper-slide">
+                <!--blockquote serve para dar mais significado ao código, utilizado para citações, depoimentos, etc-->
+                <blockquote>
+                  <p>
+                    <!--Inclusão de caractere especial-->
+                    <span>&ldquo;</span>
+                    Eu sou cliente do Beautysalon há 5 anos e não troco por nada! Certamente meu cabelo mudou muito depois que comecei a tratar somente com produtos naturais e veganos. São profissionais incríveis e qualificados.
+                  </p>
+                  <!--Tag Cite utilizada para citações-->
+                  <cite>
+                    <img src="./assets/client-1.jpg" alt="Foto de Wanessa
+                    Souza">
+                    Wanessa Souza
+                  </cite>
+                </blockquote>
+              </div>
+
+              <div class="testimonial swiper-slide">
+                <!--blockquote serve para dar mais significado ao código, utilizado para citações, depoimentos, etc-->
+                <blockquote>
+                  <p>
+                    <!--Inclusão de caractere especial-->
+                    <span>&ldquo;</span>
+                    Eu sou cliente do Beautysalon há 5 anos e não troco por nada! Certamente meu cabelo mudou muito depois que comecei a tratar somente com produtos naturais e veganos. São profissionais incríveis e qualificados.
+                  </p>
+                  <!--Tag Cite utilizada para citações-->
+                  <cite>
+                    <img src="./assets/client-2.jpg" alt="Foto de Fernanda Gonzalez">
+                    Fernanda Gonzalez
+                  </cite>
+                </blockquote>
+              </div>
+
+              <div class="testimonial swiper-slide">
+                <!--blockquote serve para dar mais significado ao código, utilizado para citações, depoimentos, etc-->
+                <blockquote>
+                  <p>
+                    <!--Inclusão de caractere especial-->
+                    <span>&ldquo;</span>
+                    Eu sou cliente do Beautysalon há 5 anos e não troco por nada! Certamente meu cabelo mudou muito depois que comecei a tratar somente com produtos naturais e veganos. São profissionais incríveis e qualificados.
+                  </p>
+                  <!--Tag Cite utilizada para citações-->
+                  <cite>
+                    <img src="./assets/client-3.jpg" alt="Foto de Andrea Figueiredo">
+                    Andrea Figueiredo
+                  </cite>
+                </blockquote>
+              </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-2"></div>
+
+      <!--CONTACT-->
+      <section class="section" id="contact">
+        <div class="container grid">
+          <div class="text">
+            <h2 class="title">Entre em contato conosco!</h2>
+            <p>
+              Entre em contato com a BeautySalon, queremos tirar suas dúvidas, ouvir suas críticas e sugestões.
+            </p>
+            <!--Link do whatsapp para encaminhar mensagem personalizada-->
+            <a href="https://api.whatsapp.com/send?phone=+5511998456754&text=Oi! Gostaria de agendar um horário" 
+            class="button" 
+            target="_blank">
+            <i class="icon-whatsapp"></i>
+            Entrar em contato
+            </a>
+          </div>
+
+          <div class="links">
+            <ul class="grid">
+              <li><i class="icon-phone1"></i>11 99845-6754</li>
+              <li><i class="icon-map-pin"></i>R. Amauri Souza, 346</li>
+              <li><i class="icon-mail"></i>contato@beautysalon.com</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-1"></div>
+    </main>
+
+    <!--Footer recebe a classe section para ter as mesma propriedades de espaçamento-->
+    <footer class="section">
+      <div class="container grid">
+        <div class="brand">
+          <a class="logo" href="#">BeautySalon.</a>
+          <p>©2022 Beautysalon.</p>
+          <p>Todos os direitos reservados.</p>
+        </div>
+
+        <div class="social grid">
+          <a href="https://instagram.com" target="_blank">
+            <i class="icon-instagram"></i>
+          </a>
+
+          <a href="https://www.facebook.com" target="_blank">
+            <i class="icon-facebook"></i>
+          </a>
+
+          <a href="https://www.youtube.com" target="_blank">
+            <i class="icon-youtube"></i>
+          </a>
+
+        </div>
+      </div>
+    </footer>
+
+    <a href="#home" class="back-to-top">
+      <i class="icon-chevrons-up"></i>
+    </a>
+
+    <!--swiper-->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- scrollreveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script src="./main.js"></script>
+
+  </body>
+</html>
